@@ -77,10 +77,34 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header"></header>
-      <main className="App-main"></main>
+      <header className="App-header">
+        <div>
+          <h1>
+            Burguer<span>Kenzie</span>
+          </h1>
+        </div>
+        <nav>
+          <input
+            type="text"
+            value={userInput}
+            onChange={(event) => setUserInput(event.target.value)}
+          />
+          <button onClick={() => showProducts(userInput)}>Pesquisar</button>
+        </nav>
+      </header>
+      <main className="App-main">
+        <MenuContainer products={products} handleClick={handleClick} />
+        <ShoppingCart
+          currentSale={currentSale}
+          cartTotal={cartTotal}
+          totalSale={totalSale}
+        />
+      </main>
     </div>
   );
+
+  //tirar dúvida de como alterar a entrada da prop products de MenuContainer
+  // para mostrar o array filtrado
 }
 
 export default App;
