@@ -53,6 +53,28 @@ function App() {
   const [currentSale, setCurrentSale] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
 
+  const showProducts = (input) => {
+    setFilteredProducts(
+      products.filter((item) => item.category.includes(input))
+    );
+  };
+  //tirar dúvida se no caso do filter, tenho que utilizar ...filteredProducts
+  //tirar dúvida de como colocar duas condicionais, ex: ||item.nome.includes(input)
+
+  const handleClick = (productId) => {
+    //const newProd = products.find((item) => item.id === productId);
+    //tirar dúvida sobre linha acima
+    setCurrentSale([
+      ...currentSale,
+      products.find((item) => item.id === productId),
+    ]);
+  };
+
+  const totalSale = () => {
+    const sale = currentSale.reduce((acc, item) => acc + item.price, 0);
+    setCartTotal(sale);
+  };
+
   return (
     <div className="App">
       <header className="App-header"></header>
