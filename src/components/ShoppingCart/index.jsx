@@ -1,40 +1,64 @@
-export const ShoppingCart = ({ currentSale, cartTotal, totalSale }) => {
+import "./styles.css";
+
+export const ShoppingCart = ({
+  currentSale,
+  cartTotal,
+  setCurrentSale,
+  totalSale,
+}) => {
   totalSale();
   //verificar se não seria uma alternativa
   //melhor trazer o state cartTotal e a função para este arquivo
+
   return (
-    <div>
-      <header>
-        <h3>Carrinho de compras</h3>
+    <div className="cart-Container">
+      <header className="cart-header">
+        <h3 className="cart-h3">Carrinho de compras</h3>
       </header>
-      <section>
-        <ul>
-          {currentSale.map((product) => (
-            <li>
-              <figure>
-                <img src={product.img} alt={product.name}></img>
-              </figure>
-              <h3>{product.name}</h3>
-              <p>{product.category}</p>
-              <button>Remover</button>
-            </li>
-          ))}
-        </ul>
-        <hr />
-        <div>
-          <label>Total</label>
-          <label>
-            {cartTotal.toLocaleString("pt-BR", {
-              style: "currency",
-              currency: "BRL",
-            })}
-          </label>
-        </div>
-        <button>Remover todos</button>
+      <section className="cart-sect">
+        <>
+          {currentSale.length > 0 ? (
+            <>
+              <ul className="cart-ul">
+                {currentSale.map((product, idx) => (
+                  <li className="cart-liItem" key={idx}>
+                    <div className="cart-itemData">
+                      <figure className="cart-itemFig">
+                        <img
+                          className="cart-itemImg"
+                          src={product.img}
+                          alt={product.name}
+                        ></img>
+                      </figure>
+                      <div>
+                        <h3 className="cart-itemH3">{product.name}</h3>
+                        <p className="cart-itemP">{product.category}</p>
+                      </div>
+                    </div>
+                    <button className="cart-itemBtnRemove">Remover</button>
+                  </li>
+                ))}
+              </ul>
+              <hr className="cart-hr" />
+              <div className="cart-divValues">
+                <label className="cart-total">Total</label>
+                <label className="cart-price">
+                  {cartTotal.toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  })}
+                </label>
+              </div>
+              <button className="cart-btnRemoveAll">Remover todos</button>
+            </>
+          ) : (
+            <div className="cart-divEmpty">
+              <h3 className="cart-h3Empty">Sua sacola está vazia</h3>
+              <p className="cart-pEmpty">Adicione itens</p>
+            </div>
+          )}
+        </>
       </section>
     </div>
   );
 };
-
-//warning devido a falta de key na li
-//erro se coloco key na li e adiciono o mesmo item/ duplicidade de key

@@ -1,6 +1,141 @@
+/* Font Inter */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
 .App {
   text-align: center;
+  font-family: "Inter", sans-serif;
+  height: 100vh;
 }
 
 .App-header {
+  background-color: #f5f5f5;
+  position: sticky;
+  position: -webkit-sticky;
+  width: 100vw;
+  height: 139px;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.App-headerDiv {
+}
+
+.App-h1 {
+  font-size: 1.5em;
+  color: rgba(51, 51, 51, 62.64%);
+  width: 250px;
+  height: 22.85px;
+}
+
+.App-span {
+  color: rgba(235, 87, 87, 64.74%);
+  font-size: 0.6em;
+}
+
+.App-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+  border: solid 2px #e0e0e0;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 96%;
+  height: 60px;
+}
+
+.App-Input {
+  border: none;
+  height: 52px;
+  font-size: 16px;
+  padding: 0px 10px 0px 10px;
+  width: 50%;
+}
+
+.App-Input:focus {
+  outline: none;
+}
+
+.App-Input::placeholder {
+  color: #e0e0e0;
+  font-size: 16px;
+}
+
+.App-btnSearch {
+  background-color: #27ae60;
+  border: solid 2px #27ae60;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 107px;
+  height: 40px;
+  color: #ffffff;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+}
+
+.App-main {
+  background-color: #ffffff;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .App {
+    overflow-x: hidden;
+    height: 100vh;
+  }
+  .App-header {
+    height: 80px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 60px;
+    box-sizing: border-box;
+  }
+
+  .App-h1 {
+    width: auto;
+  }
+
+  .App-nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px 0px 10px;
+    width: 365px;
+  }
+
+  .App-nav:hover {
+    border: solid 2px #828282;
+  }
+
+  .App-main {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 25px 60px 0px 60px;
+  }
+
+  .App-btnSearch:hover {
+    cursor: pointer;
+    background-color: #09803a;
+    border: solid 2px #09803a;
+  }
 }

@@ -42,7 +42,7 @@ function App() {
     },
     {
       id: 6,
-      name: "Fanta",
+      name: "McShake Ovomaltine",
       category: "Bebidas",
       price: 4.99,
       img: "https://i.ibb.co/QNb3DJJ/milkshake-ovomaltine.png",
@@ -54,20 +54,17 @@ function App() {
   const [cartTotal, setCartTotal] = useState(0);
 
   const showProducts = (input) => {
+    setUserInput(input);
     setFilteredProducts(
-      products.filter((item) => item.category.includes(input))
+      products.filter(
+        (item) => item.category.includes(input) || item.name.includes(input)
+      )
     );
   };
-  //tirar dúvida se no caso do filter, tenho que utilizar ...filteredProducts
-  //tirar dúvida de como colocar duas condicionais, ex: ||item.nome.includes(input)
 
   const handleClick = (productId) => {
-    //const newProd = products.find((item) => item.id === productId);
-    //tirar dúvida sobre linha acima
-    setCurrentSale([
-      ...currentSale,
-      products.find((item) => item.id === productId),
-    ]);
+    const newProd = products.find((item) => item.id === productId);
+    setCurrentSale([...currentSale, newProd]);
   };
 
   const totalSale = () => {
@@ -78,33 +75,43 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div>
-          <h1>
-            Burguer<span>Kenzie</span>
+        <div className="App-headerDiv">
+          <h1 className="App-h1">
+            Burger<span className="App-span"> Kenzie</span>
           </h1>
         </div>
-        <nav>
+        <nav className="App-nav">
           <input
+            className="App-Input"
             type="text"
+            placeholder="Digitar pesquisa"
             value={userInput}
-            onChange={(event) => setUserInput(event.target.value)}
+            onChange={(event) => showProducts(event.target.value)}
           />
-          <button onClick={() => showProducts(userInput)}>Pesquisar</button>
+          <button
+            className="App-btnSearch"
+            onClick={() => showProducts(userInput)}
+          >
+            Pesquisar
+          </button>
         </nav>
       </header>
       <main className="App-main">
-        <MenuContainer products={products} handleClick={handleClick} />
+        <MenuContainer
+          products={products}
+          filteredProducts={filteredProducts}
+          userInput={userInput}
+          handleClick={handleClick}
+        />
         <ShoppingCart
           currentSale={currentSale}
           cartTotal={cartTotal}
+          setCurrentSale={setCurrentSale}
           totalSale={totalSale}
         />
       </main>
     </div>
   );
-
-  //tirar dúvida de como alterar a entrada da prop products de MenuContainer
-  // para mostrar o array filtrado
 }
 
 export default App;
