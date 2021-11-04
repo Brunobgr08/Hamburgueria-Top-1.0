@@ -64,7 +64,10 @@ function App() {
 
   const handleClick = (productId) => {
     const newProd = products.find((item) => item.id === productId);
-    setCurrentSale([...currentSale, newProd]);
+
+    !currentSale.some((item) => item.id === newProd.id) &&
+      setCurrentSale([...currentSale, newProd]);
+    //Verificar se já existe o item no carrinho e só insere caso não exista
   };
 
   const totalSale = () => {
