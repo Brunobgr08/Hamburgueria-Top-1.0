@@ -10,6 +10,14 @@ export const ShoppingCart = ({
   //verificar se não seria uma alternativa
   //melhor trazer o state cartTotal e a função para este arquivo
 
+  const removeAll = () => {
+    setCurrentSale([]);
+  };
+
+  const removeItem = (idx) => {
+    setCurrentSale(currentSale.filter((item, index) => index !== idx));
+  };
+
   return (
     <div className="cart-Container">
       <header className="cart-header">
@@ -35,7 +43,12 @@ export const ShoppingCart = ({
                         <p className="cart-itemP">{product.category}</p>
                       </div>
                     </div>
-                    <button className="cart-itemBtnRemove">Remover</button>
+                    <button
+                      className="cart-itemBtnRemove"
+                      onClick={() => removeItem(idx)}
+                    >
+                      Remover
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -49,7 +62,9 @@ export const ShoppingCart = ({
                   })}
                 </label>
               </div>
-              <button className="cart-btnRemoveAll">Remover todos</button>
+              <button className="cart-btnRemoveAll" onClick={() => removeAll()}>
+                Remover todos
+              </button>
             </>
           ) : (
             <div className="cart-divEmpty">
