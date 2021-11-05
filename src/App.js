@@ -48,16 +48,19 @@ function App() {
       img: "https://i.ibb.co/QNb3DJJ/milkshake-ovomaltine.png",
     },
   ]);
-  const [userInput, setUserInput] = useState([]);
+  const [userInput, setUserInput] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentSale, setCurrentSale] = useState([]);
   const [cartTotal, setCartTotal] = useState(0);
 
   const showProducts = (input) => {
+    const treatedUserInput = input.toLowerCase();
     setUserInput(input);
     setFilteredProducts(
       products.filter(
-        (item) => item.category.includes(input) || item.name.includes(input)
+        (item) =>
+          item.category.toLowerCase().includes(treatedUserInput) ||
+          item.name.toLowerCase().includes(treatedUserInput)
       )
     );
   };
