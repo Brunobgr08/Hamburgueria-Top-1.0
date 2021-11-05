@@ -43,7 +43,7 @@
     width: 63%;
     height: 710px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-content: space-between;
     flex-wrap: wrap;
     overflow-x: hidden;
@@ -61,5 +61,6 @@
   .menu-h3 {
     padding-left: 0px;
     padding-bottom: 20px;
+    width: 100%;
   }
 }
