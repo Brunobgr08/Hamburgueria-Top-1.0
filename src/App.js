@@ -21,7 +21,7 @@ function App() {
     },
     {
       id: 3,
-      name: "Big Kenzie",
+      name: "Big Burguer",
       category: "Sanduíches",
       price: 18.0,
       img: "https://i.ibb.co/FYBKCwn/big-kenzie.png",
@@ -83,7 +83,7 @@ function App() {
       <header className="App-header">
         <div className="App-headerDiv">
           <h1 className="App-h1">
-            Burger<span className="App-span"> Kenzie</span>
+            Burger<span className="App-span"> Top</span>
           </h1>
         </div>
         <nav className="App-nav">
